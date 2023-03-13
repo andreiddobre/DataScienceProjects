@@ -1,6 +1,6 @@
 import numpy as np
 
-#original numpy 'array' creation routine
+#basic numpy 'array' creation routine
 first_numpy_array  = np.array([1,2,3,4])
 print('First numpy array\n', first_numpy_array)
 
