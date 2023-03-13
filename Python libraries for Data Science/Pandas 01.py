@@ -43,3 +43,5 @@ print('2.First vector+second vector series\n', first_vector_series+second_vector
 #Adding e and f that have no value, these indices will not be added to the result and would holt Not a Number value, or NaN
 second_vector_series = pd.Series([10, 20, 30, 40], index=['a', 'b', 'e', 'f'])
 print('3.First vector+second vector series\n', first_vector_series+second_vector_series)
+
+#GDPs by Country data source: https://www.worldometers.info/gdp/gdp-by-country/
