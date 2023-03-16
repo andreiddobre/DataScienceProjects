@@ -1,9 +1,7 @@
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
+import pandas as pd, seaborn as sns, matplotlib.pyplot as plt
 
-#explore and examin the correlation betwen variables
-#readin the .csv file
+#Phase 1: Explore and examin the correlation between variables
+#reading the .csv file
 df = pd.readf = pd.read_csv('middle_tn_schools.csv')
 
 #"describe" each variable or column in the dataset
@@ -54,9 +52,11 @@ sns.heatmap(df_corr, linewidths=0.1, cmap = 'copper', annot_kws={'fontsize': 7, 
 sns.set(font_scale = 2)
 plt.title("Correlated data [Copper]")
 plt.gcf().set_size_inches(9, 6)
-plt.show()
 
-#KDE plot
-fig, ax = plt.subplots(1, figsize=(12,8))
-sns.kdeplot(df.reduced_lunch, df.school_rating, cmap='Blues', shade=True, shade_lowest=False, clip=(-1,300))
-plt.scatter(df.reduced_lunch, df.school_rating, color='orangered')
+#Bivariate KDE plot
+fig, ax = plt.subplots(1, figsize=(12,6))
+sns.set(font_scale = 1)
+plt.title("KDE data [winter_r]")
+t = sns.kdeplot(df, x='reduced_lunch', y='school_rating', cmap='winter_r', cbar=True, clip=(-1,300), fill=True, alpha=.8)
+plt.scatter(df.reduced_lunch, df.school_rating, sizes=(40, 200), marker="o", alpha=.5, color='orangered')
+plt.show()
