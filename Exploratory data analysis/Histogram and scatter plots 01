@@ -1,0 +1,48 @@
+import matplotlib.pyplot as plt
+from sklearn.datasets import fetch_california_housing
+from matplotlib import style
+from matplotlib.pyplot import figure
+import seaborn as sns
+
+#load 'The California housing' dataset
+california_housing = fetch_california_housing(as_frame=True)
+
+#view 'The California housing' dataset
+print('Housing: \n', california_housing.DESCR)
+
+#overview of the entire dataset
+print('View the entire dataset \n', california_housing.frame.head())
+
+#look at the target to be predicted
+#the target contains the median of the house value for each district (therefore, this problem is a regression problem)
+print('Target to be predicted: \n', california_housing.target.head())
+
+#checking for missing values
+print('Checking for missing values: \n', california_housing.frame.info())
+
+#look at the distribution of these features by plotting their histograms
+california_housing.frame.hist(figsize=(12, 10), bins=50, color='k', edgecolor='black', alpha = 0.5)
+plt.subplots_adjust(hspace=0.5, wspace=0.3)
+#define x and y axis from the data
+x_axis = california_housing.data
+y_axis = california_housing.target
+
+#plot histogram
+plt.style.use('ggplot')
+plt.hist(y_axis, bins=50)
+#plt.xlabel('price in 1000s USD')
+#plt.ylabel('number of houses')
+plt.show()
+
+#statistics of the averages
+features_of_interest = ["AveRooms", "AveBedrms", "AveOccup", "Population"]
+california_housing.frame[features_of_interest].describe()
+
+#plot scatter plot using seaborn
+sns.scatterplot(data=california_housing.frame, x="Longitude", y="Latitude",
+                size="MedHouseVal", hue="MedHouseVal",
+                palette="viridis", alpha=0.5)
+plt.legend(title="MedHouseVal", bbox_to_anchor=(1.05, 0.95),
+           loc="upper right")
+_ = plt.title("Median house value depending of\n their spatial location")
+plt.show()
