@@ -9,7 +9,7 @@ print('Content: \n', df_fdny_csv_data_raw.describe)
 print('First 5 records: \n', df_fdny_csv_data_raw.head(5))
 
 #Skip the first row from dataset
-df_fdny_csv_data = pd.read_csv('FDNY_Firehouse_Listing.csv',skiprows=1)
+df_fdny_csv_data = pd.read_csv('FDNY_Firehouse_Listing.csv', skiprows=1)
 #View first five records from fixed dataset
 print('First 5 records (processed data): \n', df_fdny_csv_data.head(5))
 
@@ -29,9 +29,9 @@ print('Number of records: \n', df_fdny_csv_data.count())
 print('Datatypes are: \n', df_fdny_csv_data.dtypes)
 
 #Select FDNY information boroughwise
-group_borough = df_fdny_csv_data.groupby('Borough')
-#View FDNY information for each borough
-print('Info grouped by "Borough": \n', groupby_borough.size())
+groupby_borough = df_fdny_csv_data_raw.groupby('Borough')
+#View FDNY information for each Borough
+print('Group rows info by "Borough": \n', groupby_borough.size())
 
 #Select FDNY information for Manhattan
 fdny_info_Manhattan = groupby_borough.get_group('Manhattan')
