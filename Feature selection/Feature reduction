@@ -1,0 +1,62 @@
+import sklearn
+from sklearn.datasets import load_iris
+
+#loading Iris data set
+#4 features: sepal-length, sepal-width, petal-length, petal-width
+#the records have been classified into one of the three classes: Iris-setosa, Iris-versicolor and Iris-verginica
+
+data = load_iris()
+
+x = data.data
+y = data.target
+
+from sklearn.model_selection import train_test_split
+x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.2, random_state=1)
+print('Train shapes: \n', x_train.shape)
+
+from sklearn.linear_model import LogisticRegression
+lr = LogisticRegression()
+print('X train, Y train', lr.fit(x_train, y_train))
+
+LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
+                   intercept_scaling=1, max_iter=100, multi_class='warn',
+                   n_jobs=None, penalty='l2', random_state=None, solver='warn',
+                   tol=0.0001, verbose=0, warm_start=False)
+y_predict = lr.predict(x_test)
+
+from sklearn.metrics import accuracy_score
+accuracy = accuracy_score(y_predict, y_test)
+print('Print accuracy: \n', accuracy)
+
+from sklearn.decomposition import PCA
+#number of components to keep 0.95, estimated from input data
+sklearn_pca = PCA(n_components = 0.95)
+print('Principal component analysis (PCA) \n', sklearn_pca.fit(x_train))
+
+#doing the projection
+x_train_transformed = sklearn_pca.transform(x_train)
+#shape the data for consumption in scikit-learn
+print('x_train_transformed.shape: \n', x_train_transformed.shape)
+#output(120,2) #shapes in data
+
+#shape the data for consumption in scikit-learn
+print('x_test.shape: \n', x_test.shape)
+#output(30,4) #shapes in data
+
+#doing the projection
+x_test_transformed = sklearn_pca.transform(x_test)
+#shape the data for consumption in scikit-learn
+print('x_test_transformed.shape: \n', x_test_transformed.shape)
+#output(30,2) #shapes in data
+
+lr = LogisticRegression(penalty='l2')
+#Solver lbfgs supports only 'l2' or 'none' penalties
+#The 'penalty' parameter of LogisticRegression must be a str among {'elasticnet', 'l2', 'none' (deprecated), 'l1'} or None
+print('LogisticRegression \n', lr.fit(x_train_transformed, y_train))
+
+y_predict = lr.predict(x_test_transformed)
+
+from sklearn.metrics import accuracy_score
+
+accuracy = accuracy_score(y_predict,y_test)
+print('Print accuracy: \n', accuracy)
