@@ -1,4 +1,3 @@
-#import required libraries
 import matplotlib.pyplot as plt
 from matplotlib import style
 
