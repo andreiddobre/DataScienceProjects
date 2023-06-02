@@ -1,3 +1,8 @@
+#pip install pandas
+#pip install numpy
+#pip install seaborn
+#pip install matplotlib
+
 import pandas as pd
 import numpy as np
 import seaborn as sns
