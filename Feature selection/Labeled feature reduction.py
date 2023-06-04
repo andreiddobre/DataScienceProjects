@@ -1,3 +1,4 @@
+#pip install mlxtend
 from mlxtend.data import iris_data
 from mlxtend.preprocessing import standardize
 from mlxtend.feature_extraction import 
