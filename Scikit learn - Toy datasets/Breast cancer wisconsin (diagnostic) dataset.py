@@ -1,3 +1,5 @@
+#pip install sklearn
+
 from sklearn.datasets import load_breast_cancer
 
 #load the dataset
