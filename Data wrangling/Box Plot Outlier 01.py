@@ -1,3 +1,5 @@
+#pip install sklearn
+
 from sklearn.datasets import load_diabetes
 from sklearn import datasets
 
