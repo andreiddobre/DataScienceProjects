@@ -1,3 +1,5 @@
+#pip install numpy
+
 import numpy as np
 
 #basic numpy 'array' creation routine
