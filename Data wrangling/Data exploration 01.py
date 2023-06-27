@@ -1,3 +1,5 @@
+#pip install pandas
+
 import pandas as pd
 
 #Loading .csv File in Python
