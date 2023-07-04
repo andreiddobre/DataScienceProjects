@@ -1,3 +1,7 @@
+#pip install pandas
+#pip install seaborn
+#pip install matplotlib
+
 import pandas as pd, seaborn as sns, matplotlib.pyplot as plt
 
 #Phase 1: Explore and examin the correlation between variables
