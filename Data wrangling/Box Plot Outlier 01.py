@@ -61,4 +61,3 @@ for i in range(3):
         axs[i, j].set_ylabel('target')
 plt.tight_layout()
 plt.show()
-
