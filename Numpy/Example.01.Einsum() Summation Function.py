@@ -30,3 +30,4 @@ result = np.einsum("n,n", arr1, arr2)
 
 #displaying the einstein summation of the given arrays
 print("The Einstein Summation is =", result)
+
